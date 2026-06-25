@@ -7,5 +7,7 @@ namespace Library.Infrastructure.Repositories
         Task<List<Book>> SearchAsync(string term);
 
         Task<List<Book>> GetAllWithAuthorsAsync();
+
+        Task<List<Book>> GetTopRatedBooksAsync();
     }
 }

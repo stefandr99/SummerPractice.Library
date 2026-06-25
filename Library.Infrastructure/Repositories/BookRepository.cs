@@ -19,7 +19,9 @@ namespace Library.Infrastructure.Repositories
 
         public async Task<List<Book>> GetAllWithAuthorsAsync()
         {
-            return [];
+            return await context.Books
+                .Include(x => x.Author)
+                .ToListAsync();
         }
 
         public async Task<List<Book>> SearchAsync(string term)
@@ -43,6 +45,12 @@ namespace Library.Infrastructure.Repositories
             {
                 context.Books.Remove(entity);
             }
+        }
+
+        // TODO: Implement
+        public async Task<List<Book>> GetTopRatedBooksAsync()
+        {
+            return [];
         }
 
         public async Task SaveChangesAsync()

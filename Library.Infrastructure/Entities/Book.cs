@@ -10,6 +10,8 @@
 
         public int PublicationYear { get; set; }
 
+        public decimal Rating { get; set; }
+
         public Guid AuthorId { get; set; }
 
         public Author Author { get; set; }

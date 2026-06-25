@@ -55,8 +55,8 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
 5. Check table ```Book``` in SSMS
 
 ## IV. Exercise 3
-1. Checkout to branch ```exercises/3_get-books-with-rating```
-    - if vs not working, open git bash in project folder and run ```git checkout exercises/3_get-books-with-rating```
+1. Checkout to branch ```exercises/3_get-top-books-with-rating```
+    - if vs not working, open git bash in project folder and run ```git checkout exercises/3_get-top-books-with-rating```
 2. Run INSERT SQL command from file: ```Scripts/booksSeed.sql```
 2. A new flow has been added in application: **get books by rating with authors**
 3. Implement ```GetTopRatedBooksAsync``` method in ```BookRepository``` respecting following requirements:

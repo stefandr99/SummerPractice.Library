@@ -1,0 +1,25 @@
+IF OBJECT_ID('dbo.Books', 'U') IS NOT NULL
+    DROP TABLE dbo.Books;
+
+IF OBJECT_ID('dbo.Authors', 'U') IS NOT NULL
+    DROP TABLE dbo.Authors;
+
+CREATE TABLE dbo.Authors
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE dbo.Books
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Title NVARCHAR(300) NOT NULL,
+    PublicationYear INT NOT NULL,
+    AuthorId UNIQUEIDENTIFIER NOT NULL,
+    IsDeleted BIT NOT NULL DEFAULT 0,
+
+    CONSTRAINT FK_Books_Authors
+        FOREIGN KEY (AuthorId)
+        REFERENCES dbo.Authors(Id)
+);

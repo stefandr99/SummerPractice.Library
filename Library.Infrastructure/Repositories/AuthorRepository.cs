@@ -8,12 +8,13 @@ namespace Library.Infrastructure.Repositories
     {
         public async Task<List<Author>> GetAllAsync()
         {
-            return [];
+            return await context.Authors.ToListAsync();
         }
 
         public async Task<Author?> GetByIdAsync(Guid id)
         {
-            return new();
+            return await context.Authors
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Author>> SearchAsync(string term)
@@ -23,25 +24,16 @@ namespace Library.Infrastructure.Repositories
 
         public async Task AddAsync(Author entity)
         {
-            await context.Authors.AddAsync(entity);
+            var id = await context.Authors.AddAsync(entity);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            var author = await context.Authors
-                .Include(x => x.Books)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await context.Authors.FindAsync(id);
 
-            if (author == null)
+            if (entity != null)
             {
-                return;
-            }
-
-            author.IsDeleted = true;
-
-            foreach (var book in author.Books)
-            {
-                book.IsDeleted = true;
+                context.Authors.Remove(entity);
             }
         }
 

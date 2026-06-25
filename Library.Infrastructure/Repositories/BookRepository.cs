@@ -8,12 +8,13 @@ namespace Library.Infrastructure.Repositories
     {
         public async Task<List<Book>> GetAllAsync()
         {
-            return [];
+            return await context.Books.ToListAsync();
         }
 
         public async Task<Book?> GetByIdAsync(Guid id)
         {
-            return new();
+            return await context.Books
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Book>> GetAllWithAuthorsAsync()
@@ -23,6 +24,7 @@ namespace Library.Infrastructure.Repositories
 
         public async Task<List<Book>> SearchAsync(string term)
         {
+            // TODO : Implement this method to search for books by title
             return [];
         }
 
@@ -33,7 +35,12 @@ namespace Library.Infrastructure.Repositories
 
         public async Task DeleteAsync(Guid id)
         {
-            // TODO
+            var entity = await context.Books.FindAsync(id);
+
+            if (entity != null)
+            {
+                context.Books.Remove(entity);
+            }
         }
 
         public async Task SaveChangesAsync()

@@ -9,5 +9,7 @@ namespace Library.Infrastructure.Repositories
         Task<List<Book>> GetAllWithAuthorsAsync();
 
         Task<List<Book>> GetTopRatedBooksAsync();
+
+        Task<List<Book>> SearchByRatingAsync(int minimumRating);
     }
 }

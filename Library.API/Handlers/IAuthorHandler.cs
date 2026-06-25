@@ -12,5 +12,7 @@ namespace Library.API.Handlers
         Task<List<AuthorDto>> SearchAsync(string term);
 
         Task<Guid> AddAsync(CreateAuthorDto dto);
+
+        Task DeleteAsync(Guid id);
     }
 }

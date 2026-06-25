@@ -30,6 +30,12 @@ namespace Library.API.Controllers
             return Ok(await handler.SearchAsync(term));
         }
 
+        [HttpGet("searchByRating")]
+        public async Task<IActionResult> SearchByRating(int minimumRating)
+        {
+            return Ok(await handler.SearchByRatingAsync(minimumRating));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateBookDto dto)
         {

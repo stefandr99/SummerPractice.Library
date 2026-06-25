@@ -10,12 +10,21 @@ namespace Library.Infrastructure.Database
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>()
+                .HasQueryFilter(b => !b.IsDeleted)
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Author>()
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
+
+            /**
+             * modelBuilder.Entity<Book>()
+                .HasOne(x => x.Author)
+                .WithMany(x => x.Books)
+                .HasForeignKey(x => x.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
+             */
         }
 
         public DbSet<Book> Books { get; set; }

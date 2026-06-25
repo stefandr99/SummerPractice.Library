@@ -78,5 +78,19 @@ namespace Library.API.Handlers
                 AuthorName = x.Author.Name
             }).ToList();
         }
+
+        public async Task<List<BookDto>> SearchByRatingAsync(int minimumRating)
+        {
+            var books = await repository.SearchByRatingAsync(minimumRating);
+
+            return books.Select(b => new BookDto
+            {
+                Id = b.Id,
+                Title = b.Title,
+                PublicationYear = b.PublicationYear,
+                AuthorId = b.AuthorId,
+                AuthorName = b.Author?.Name
+            }).ToList();
+        }
     }
 }

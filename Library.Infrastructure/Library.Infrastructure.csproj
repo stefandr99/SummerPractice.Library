@@ -12,6 +12,7 @@
 	  <None Remove="Configurations\**" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.79" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.28" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.28">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

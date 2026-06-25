@@ -54,5 +54,11 @@ namespace Library.API.Handlers
 
             return author.Id;
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            await repository.DeleteAsync(id);
+            await repository.SaveChangesAsync();
+        }
     }
 }

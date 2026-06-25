@@ -27,16 +27,25 @@ namespace Library.Infrastructure.Repositories
 
         public async Task AddAsync(Author entity)
         {
-            var id = await context.Authors.AddAsync(entity);
+            await context.Authors.AddAsync(entity);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            var entity = await context.Authors.FindAsync(id);
+            var author = await context.Authors
+                .Include(x => x.Books)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (entity != null)
+            if (author == null)
             {
-                context.Authors.Remove(entity);
+                return;
+            }
+
+            author.IsDeleted = true;
+
+            foreach (var book in author.Books)
+            {
+                book.IsDeleted = true;
             }
         }
 

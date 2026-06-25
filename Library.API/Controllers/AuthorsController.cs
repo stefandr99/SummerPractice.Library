@@ -37,5 +37,13 @@ namespace Library.API.Controllers
 
             return Ok(id);
         }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await handler.DeleteAsync(id);
+
+            return NoContent();
+        }
     }
 }

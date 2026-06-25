@@ -24,8 +24,10 @@ namespace Library.Infrastructure.Repositories
 
         public async Task<List<Book>> SearchAsync(string term)
         {
-            // TODO : Implement this method to search for books by title
-            return [];
+            return await context.Books
+                .Where(x => x.Title.Contains(term))
+                .OrderBy(x => x.Title)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Book entity)

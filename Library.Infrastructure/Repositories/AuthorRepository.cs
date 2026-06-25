@@ -19,7 +19,10 @@ namespace Library.Infrastructure.Repositories
 
         public async Task<List<Author>> SearchAsync(string term)
         {
-            return [];
+            return await context.Authors
+                .Where(x => x.Name.Contains(term))
+                .OrderBy(x => x.Name)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Author entity)

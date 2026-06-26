@@ -9,9 +9,15 @@ namespace Library.Infrastructure.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Book>()
+            var bookEntity = modelBuilder.Entity<Book>();
+            
+            bookEntity
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
+
+            bookEntity
+                .Property(x => x.Rating)
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Author>()
                 .Property(x => x.Id)

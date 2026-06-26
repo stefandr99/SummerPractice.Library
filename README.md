@@ -73,6 +73,7 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - via VS: Git changes right tab -> Pull (arrow down icon)
     - git bash: ```git pull```
 3. Add a new column ```decimal``` in ```Book``` entity: ```Rating```
+4. Uncomment lines 18-20 from ```DbContext```
 4. Create a new migration with meaningful name
     - Info: Right click on Library.Infrastructure project and click "Open in terminal"
     - Hint: use ```dotnet ef migrations add MigrationName```

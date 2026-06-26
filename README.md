@@ -33,15 +33,34 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - paste in SSMS query tab
     - run / F5
 
+## Errors
+1. ```cannot be loaded because running scripts is disabled on this system```
+    
+    **Solution**: Run in Powershell ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser```
+
+2. Migration update fails with similar issues: "network issue", "server cannot be found", etc.
+
+    **Context**: [here](https://github.com/stefandr99/SummerPractice.Library/blob/exercises/1_search-books-by-title/Library.API/appsettings.json) is configuration file of the application where an important part is present: **connectionString**.
+    Connection string is the "bridge" between application and database. It tells application where database can be found (our case: ```(localdb)\\MSSQLLocalDB```).
+
+    **Solution**: 
+    - SQL server instance has a different name than the one in connection string;
+    - ```(localdb)\\MSSQLLocalDB``` is the default server name;
+    - replace this part with the name of your server - you can see server name in SSMS just after you open SSMS application or after connection in the left side panel.
+
 ## II. Exercise 1
 
 1. Checkout to branch ```exercises/1_search-books-by-title```
     - if vs not working, open git bash in project folder and run ```git checkout exercises/1_search-books-by-title```
-1. Implement method ```SearchAsync``` from ```BookRepository```
-2. Return all books from database which have in title term sent as parameter
-3. Hints:
+2. Pull changes before any implementation
+    - via VS: Git changes right tab -> Pull (arrow down icon)
+    - git bash: ```git pull```
+3. Implement method ```SearchAsync``` from ```BookRepository```
+4. **Return all books from database which have in title term sent as parameter ordered by Title**
+5. Hints:
+    - use LINQ methods
     - use ```.ToListAsync()``` to make method async (**async - not in scope for this session**)
-4. Test method implementation by calling ```api/books/search``` endpoint
+6. Test method implementation by calling ```api/books/search``` endpoint
 
 ## III. Exercise 2
 

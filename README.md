@@ -62,6 +62,7 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - use LINQ methods
     - use ```.ToListAsync()``` to make method async (**async - not in scope for this session**)
 6. Test method implementation by calling ```api/books/search``` endpoint
+    - database is empty: before testing search flow, add 1-2 authors and 1-2 books in database via create endpoints
 
 ## III. Exercise 2
 
@@ -72,6 +73,7 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - via VS: Git changes right tab -> Pull (arrow down icon)
     - git bash: ```git pull```
 3. Add a new column ```decimal``` in ```Book``` entity: ```Rating```
+4. Uncomment lines 18-20 from ```DbContext```
 4. Create a new migration with meaningful name
     - Info: Right click on Library.Infrastructure project and click "Open in terminal"
     - Hint: use ```dotnet ef migrations add MigrationName```
@@ -84,12 +86,12 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - **if prompted - discard all local changes not to have any conflicts afterwards**
     - if vs not working, open git bash in project folder and run ```git checkout exercises/3_get-top-books-with-rating```
 2. Run INSERT SQL command from file: ```Scripts/booksSeed.sql```
-2. A new flow has been added in application: **get books by rating with authors**
-3. Implement ```GetTopRatedBooksAsync``` method in ```BookRepository``` respecting following requirements:
+3. A new flow has been added in application: **get books by rating with authors**
+4. Implement ```GetTopRatedBooksAsync``` method in ```BookRepository``` respecting following requirements:
     - Published after 2010
     - Rating >= 4
     - Include Author
     - Order by Rating descending
-4. Test endpoint ```GET /api/books/top```
+5. Test endpoint ```GET /api/books/top```
 
-Last branch: ```final-details```
+Last branch: ```final-details``` - pull again changes

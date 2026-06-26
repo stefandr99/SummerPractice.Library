@@ -94,4 +94,4 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
     - Order by Rating descending
 5. Test endpoint ```GET /api/books/top```
 
-Last branch: ```final-details```
+Last branch: ```final-details``` - pull again changes

@@ -51,7 +51,6 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
 ## II. Exercise 1
 
 1. Checkout to branch ```exercises/1_search-books-by-title```
-    - **if prompted - discard all local changes not to have any conflicts afterwards**
     - if vs not working, open git bash in project folder and run ```git checkout exercises/1_search-books-by-title```
 2. Pull changes before any implementation
     - via VS: Git changes right tab -> Pull (arrow down icon)
@@ -67,7 +66,6 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
 ## III. Exercise 2
 
 1. Checkout to branch ```exercises/2_create-new-migration```
-    - **if prompted - discard all local changes not to have any conflicts afterwards**
     - if VS not working, open git bash in project folder and run ```git checkout exercises/2_create-new-migration```
 2. Pull changes before any implementation
     - via VS: Git changes right tab -> Pull (arrow down icon)
@@ -83,7 +81,6 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
 
 ## IV. Exercise 3
 1. Checkout to branch ```exercises/3_get-top-books-with-rating```
-    - **if prompted - discard all local changes not to have any conflicts afterwards**
     - if vs not working, open git bash in project folder and run ```git checkout exercises/3_get-top-books-with-rating```
 2. Run INSERT SQL command from file: ```Scripts/booksSeed.sql```
 3. A new flow has been added in application: **get books by rating with authors**

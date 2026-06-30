@@ -8,12 +8,13 @@ namespace Library.Infrastructure.Repositories
     {
         public async Task<List<Book>> GetAllAsync()
         {
-            return [];
+            return await context.Books.ToListAsync();
         }
 
         public async Task<Book?> GetByIdAsync(Guid id)
         {
-            return new();
+            return await context.Books
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Book>> GetAllWithAuthorsAsync()
@@ -23,7 +24,10 @@ namespace Library.Infrastructure.Repositories
 
         public async Task<List<Book>> SearchAsync(string term)
         {
-            return [];
+            return await context.Books
+                .Where(x => x.Title.Contains(term))
+                .OrderBy(x => x.Title)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Book entity)
@@ -33,7 +37,12 @@ namespace Library.Infrastructure.Repositories
 
         public async Task DeleteAsync(Guid id)
         {
-            // TODO
+            var entity = await context.Books.FindAsync(id);
+
+            if (entity != null)
+            {
+                context.Books.Remove(entity);
+            }
         }
 
         public async Task SaveChangesAsync()

@@ -12,5 +12,7 @@ namespace Library.API.Handlers
         Task<List<BookDto>> SearchAsync(string term);
 
         Task<Guid> AddAsync(CreateBookDto dto);
+
+        Task<List<TopRatedBookDto>> GetTopRatedBooksAsync();
     }
 }

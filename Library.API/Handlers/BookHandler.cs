@@ -57,6 +57,7 @@ namespace Library.API.Handlers
             {
                 Title = dto.Title,
                 PublicationYear = dto.PublicationYear,
+                //Rating = dto.Rating,
                 AuthorId = dto.AuthorId
             };
 
@@ -64,6 +65,19 @@ namespace Library.API.Handlers
             await repository.SaveChangesAsync();
 
             return book.Id;
+        }
+
+        public async Task<List<TopRatedBookDto>> GetTopRatedBooksAsync()
+        {
+            var books = await repository.GetTopRatedBooksAsync();
+
+            return books.Select(x => new TopRatedBookDto
+            {
+                Title = x.Title,
+                PublicationYear = x.PublicationYear,
+                //Rating = x.Rating,
+                AuthorName = x.Author.Name
+            }).ToList();
         }
     }
 }

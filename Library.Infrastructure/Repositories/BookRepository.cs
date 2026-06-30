@@ -45,6 +45,12 @@ namespace Library.Infrastructure.Repositories
             }
         }
 
+        // TODO: Implement
+        public async Task<List<Book>> GetTopRatedBooksAsync()
+        {
+            return [];
+        }
+
         public async Task SaveChangesAsync()
         {
             await context.SaveChangesAsync();

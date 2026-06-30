@@ -2,6 +2,61 @@
 
 Library .NET 10 API created with purpose of learning Entity Framework and repository pattern.
 
+## [UPDATE] Github Codespaces
+
+### 1. Setup codespace
+1. Click below button to create an own codespace:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/stefandr99/SummerPractice.Library?quickstart=1)
+
+2. Create new 
+3. Wait up to 5 minutes to install and initiate project tools and dependencies
+4. Right click on Library.Infrastructure project and choose: "Open in Integrated Terminal"
+5. run ```dotnet ef database update``` to apply initial migration (*the one which creates the tables*)
+6. On the left side (most probably the last one), there is an icon as a *server* which is the SQL Server icon
+7. Click "Add connection"
+    - **Profile name**: ```Localdb```
+    - **Server name**: ```127.0.0.1```
+    - **Trust server certificate**: check
+    - **Authentication type**: ```SQL login```
+    - **User name**: ```sa```
+    - **Password**: ```p@ssw0rd123```
+    - **Save password**: check
+    - **Connect**
+8. Now you'll be able to access the database and query tables directly in codespace
+
+### 2. Exercise 1 - add a new migration
+
+1. Add a new column ```decimal``` in ```Book``` entity: ```Rating```
+2. Uncomment lines 18-20 from ```DbContext```
+3. Right click on Library.Infrastructure project
+4. Click "Open in Integrated Terminal"
+5. Create a new migration with meaningful name (use ```dotnet ef migrations add ...``` command)
+6. Update dabase to apply new migration ```dotnet ef database update```
+7. Check new column in database
+8. Uncomment line 60 in ```BookHandler``` (to map new rating property)
+
+#### Test changes
+1. Right click on Library.API project
+2. Click "Open in Integrated Terminal"
+3. Run ```dotnet run```
+4. 2 options:
+    - a popup might appear that app is running at specific port, click ```Open in browser``` - swagger should be opened, you can test endpoints, create books and authors, get and search
+    - go to link displayed in terminal after: ```Now listening on: ```
+
+### 3. Exercise 2 - implement get top books
+
+1. Run INSERT SQL command from file: ```Scripts/booksSeed.sql``` in tour codespace
+2. New flow in application: **get books by rating with authors**
+3. Uncomment line 78 in ```BookHandler``` (to map new rating property)
+3. Implement ```GetTopRatedBooksAsync``` method in ```BookRepository``` respecting following requirements:
+    - Published after 2010
+    - Rating >= 4
+    - Include Author
+    - Order by Rating descending
+5. Test endpoint ```GET /api/books/top```
+
+
 ## I. Setup
 
 ### I.1. Create database

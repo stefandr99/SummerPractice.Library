@@ -1,6 +1,6 @@
-﻿namespace Library.API.DTO.Create
+﻿namespace Library.API.DTO
 {
-    public class CreateBookDto
+    public class TopRatedBookDto
     {
         public string Title { get; set; }
 
@@ -8,6 +8,6 @@
 
         public decimal Rating { get; set; }
 
-        public Guid AuthorId { get; set; }
+        public string AuthorName { get; set; }
     }
 }

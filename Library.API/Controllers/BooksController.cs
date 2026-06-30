@@ -37,5 +37,13 @@ namespace Library.API.Controllers
 
             return Ok(id);
         }
+
+        [HttpGet("top")]
+        public async Task<IActionResult> GetTopRatedBooks()
+        {
+            var result = await handler.GetTopRatedBooksAsync();
+
+            return Ok(result);
+        }
     }
 }

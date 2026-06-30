@@ -10,7 +10,7 @@ namespace Library.Infrastructure.Database
             var optionsBuilder = new DbContextOptionsBuilder<LibraryDbContext>();
 
             optionsBuilder.UseSqlServer(
-                "Server=(localdb)\\MSSQLLocalDB;Database=LibraryDb;Trusted_Connection=True;TrustServerCertificate=True");
+                "Server=127.0.0.1;Database=CourseDb;User Id=sa;Password=p@ssw0rd123;TrustServerCertificate=True;");
 
             return new LibraryDbContext(optionsBuilder.Options);
         }

@@ -92,3 +92,5 @@ Run ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser``` a
 5. Test endpoint ```GET /api/books/top```
 
 Last branch: ```final-details``` - pull again changes
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/stefandr99/SummerPractice.Library?quickstart=1)

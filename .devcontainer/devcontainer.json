@@ -1,0 +1,19 @@
+{
+  "name": ".NET 10 & SQL Server Sandbox",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "containerEnv": {
+    "ConnectionStrings__DefaultConnection": "Server=127.0.0.1;Database=CourseDb;User Id=sa;Password=p@ssw0rd123;TrustServerCertificate=True;"
+  },
+  "postCreateCommand": "dotnet tool install --global dotnet-ef && docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=p@ssw0rd123' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp"
+      ]
+    }
+  }
+}
